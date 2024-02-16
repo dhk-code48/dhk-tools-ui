@@ -60,7 +60,7 @@ const EditText: FC<{ data: textProps }> = ({ data }) => {
     };
 
     try {
-      const res = await fetch(`http://192.168.18.87:1337/api/rich-texts/${data.id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/rich-texts/${data.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
