@@ -31,8 +31,7 @@ const ValidateFileAccess: FC<{
         toast({
           title: "Invalid Password !!",
           variant: "destructive",
-          description:
-            "The password you entered doesn't match the original one",
+          description: "The password you entered doesn't match the original one",
         });
       }
     } catch (error) {
@@ -66,15 +65,15 @@ const ValidateFileAccess: FC<{
         <div className="flex items-center text-center flex-col gap-2 mt-10">
           <h1 className="text-3xl font-bold">Download Files</h1>
           <p className="text-muted-foreground">
-            dhk-tools is not responsbile if the file <br /> you are accessing
-            contain viruses and other illegal stuff
+            dhk-tools is not responsbile if the file <br /> you are accessing contain viruses and
+            other illegal stuff
           </p>
           <div className="my-5">
             {files !== null &&
               files.map((file, index) => {
                 return (
                   <Link
-                    href={"http://192.168.18.87:1337" + file.url}
+                    href={`${process.env.NEXT_PUBLIC_STRAPI_URL}` + file.url}
                     target="_blank"
                     key={index}
                     className="flex items-center text-muted-foreground my-1 hover:underline"
