@@ -41,7 +41,7 @@ export const handleUploadFile = async (files: File[], url: string, password: str
       },
     };
 
-    const dummyResponse = await fetch("http://localhost:1337/api/dhk-files", {
+    const dummyResponse = await fetch(`${url}/api/dhk-files`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
