@@ -26,15 +26,17 @@ const upload = async (file: File) => {
   }
 };
 
-export const handleUploadFile = async (files: File[], url: string, password: string) => {
+export const handleUploadFile = async (files: File[], customUrl: string, password: string) => {
   try {
+    const url = process.env.NEXT_PUBLIC_STRAPI_URL;
+
     const uploadPromises = files.map((file) => upload(file));
 
     const filesId = await Promise.all(uploadPromises);
 
     const data = {
       data: {
-        url: url,
+        url: customUrl,
         password: password,
         uid: uuid(),
         fileId: filesId,
@@ -46,10 +48,11 @@ export const handleUploadFile = async (files: File[], url: string, password: str
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "no-cache",
       body: JSON.stringify(data),
     });
 
+    console.log(dummyResponse.status);
+    console.log(dummyResponse.statusText);
     if (!dummyResponse.ok) {
       throw new Error("Dummy API request failed");
     }
@@ -57,6 +60,7 @@ export const handleUploadFile = async (files: File[], url: string, password: str
     const dummyData = await dummyResponse.json();
     console.log("DOUBLE DATA => ", dummyData);
   } catch (error) {
+    console.log("error => ", error);
     toast({
       title: "Invalid Url Name",
       variant: "destructive",

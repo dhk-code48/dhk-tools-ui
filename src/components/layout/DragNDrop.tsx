@@ -34,17 +34,13 @@ const DragNDrop: React.FC = () => {
   };
 
   const handleUpload = () => {
-    handleUploadFile(droppedFiles, customUrl, password).then(() =>
-      window.location.reload()
-    );
+    handleUploadFile(droppedFiles, customUrl, password).then(() => window.location.reload());
   };
 
   return (
     <>
       <div
-        className={`p-4 border-dashed border-2 ${
-          isDragging ? "bg-gray-100 text-black " : ""
-        }`}
+        className={`p-4 border-dashed border-2 ${isDragging ? "bg-gray-100 text-black " : ""}`}
         onDragOver={handleDragOver}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
@@ -74,9 +70,7 @@ const DragNDrop: React.FC = () => {
         />
         <label
           className={`${
-            customUrl.length < 3 || customUrl.length > 20
-              ? "text-red-500"
-              : "text-green-500"
+            customUrl.length < 3 || customUrl.length > 20 ? "text-red-500" : "text-green-500"
           } text-sm py-3 pl-1`}
         >
           Character Length : 3 - 20
