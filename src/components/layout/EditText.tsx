@@ -97,11 +97,11 @@ const EditText: FC<{ data: textProps }> = ({ data }) => {
 
   async function handleVal() {
     try {
-      const isValidPassword = await handleValidation(password, data.attributes.password);
+      // const isValidPassword = await handleValidation(password, data.attributes.password);
 
-      console.log("ISVALIDPASSWORD :- ", isValidPassword);
+      // console.log("ISVALIDPASSWORD :- ", isValidPassword);
 
-      if (isValidPassword) {
+      if (password === data.attributes.password) {
         validateUser(); // Call the prop function on successful access
       } else {
         unValidateUser();
